@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amogh Singh – Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0f0e0c;
+    --paper: #f5f1eb;
+    --accent: #c84b2f;
+    --accent2: #2a5c8a;
+    --muted: #7a7469;
+    --rule: #d4cfc8;
+    --sidebar: #1a1916;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    background: #fff;
+    box-shadow: 0 4px 40px rgba(0,0,0,0.12);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+  }
+
+  @media print {
+    @page { size: A4; margin: 0; }
+    body { padding: 0; background: white; }
+    .page { box-shadow: none; width: 794px; min-height: 1123px; }
+  }
+
+  /* SIDEBAR */
+  .sidebar {
+    background: var(--sidebar);
+    color: #e8e4dc;
+    padding: 44px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .name-block .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    line-height: 1.15;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+
+  .name-block .role {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .contact-block a,
+  .contact-block span {
+    display: block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    font-weight: 300;
+    color: #b8b0a4;
+    text-decoration: none;
+    line-height: 1.9;
+    letter-spacing: 0.2px;
+    transition: color 0.2s;
+    word-break: break-all;
+  }
+
+  .contact-block a:hover { color: #fff; }
+
+  .s-heading {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #2e2c28;
+  }
+
+  .skill-group { margin-bottom: 16px; }
+  .skill-group-label {
+    font-size: 10px;
+    font-weight: 500;
+    color: #c8c0b4;
+    margin-bottom: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    font-weight: 400;
+    background: #2a2924;
+    color: #a8a09a;
+    padding: 3px 7px;
+    border-radius: 2px;
+    border: 1px solid #3a3830;
+    letter-spacing: 0.3px;
+  }
+
+  .tag.highlight {
+    background: rgba(200, 75, 47, 0.15);
+    color: #d4856a;
+    border-color: rgba(200, 75, 47, 0.3);
+  }
+
+  .cert-item {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 400;
+    color: #a8a09a;
+    padding: 7px 0;
+    border-bottom: 1px solid #252320;
+    line-height: 1.4;
+  }
+
+  .cert-item .cert-provider {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: #5e5a54;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+
+  .cert-item .cert-status {
+    font-family: 'DM Mono', monospace;
+    font-size: 8.5px;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+  }
+
+  .profile-link {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid #252320;
+  }
+
+  .profile-link .platform {
+    font-family: 'DM Mono', monospace;
+    font-size: 9.5px;
+    color: #6a6660;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    min-width: 62px;
+  }
+
+  .profile-link .handle {
+    font-size: 11px;
+    font-weight: 400;
+    color: #a8a09a;
+  }
+
+  /* MAIN */
+  .main {
+    padding: 44px 44px 44px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .m-heading {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .m-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .objective-text {
+    font-size: 13px;
+    font-weight: 400;
+    color: #1a1916;
+    line-height: 1.75;
+    border-left: 3px solid var(--accent);
+    padding-left: 16px;
+    font-style: normal;
+  }
+
+  /* EDUCATION */
+  .edu-block {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 4px 16px;
+  }
+
+  .edu-degree {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+    grid-column: 1 / -1;
+  }
+
+  .edu-college {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--accent2);
+  }
+
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  .edu-cgpa {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    color: var(--muted);
+  }
+
+  /* PROJECTS */
+  .project-card {
+    padding: 16px 18px;
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent2);
+    margin-bottom: 14px;
+    background: #fdfcfb;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    border-left-color: var(--accent);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  .project-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .project-bullets {
+    list-style: none;
+    margin-bottom: 10px;
+  }
+
+  .project-bullets li {
+    font-size: 12px;
+    font-weight: 400;
+    color: #4a4642;
+    line-height: 1.65;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .project-bullets li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .tech-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--accent2);
+    background: rgba(42, 92, 138, 0.08);
+    border: 1px solid rgba(42, 92, 138, 0.2);
+    padding: 2px 8px;
+    border-radius: 2px;
+  }
+
+  /* ACHIEVEMENTS */
+  .achievement-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0ece6;
+  }
+
+  .ach-bullet {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .ach-text {
+    font-size: 12.5px;
+    font-weight: 400;
+    color: #3a3632;
+    line-height: 1.6;
+  }
+
+  @media print {
+    body { padding: 0; background: white; }
+    .page { box-shadow: none; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="name-block">
+      <div class="name">Amogh Singh</div>
+      <div class="role">AI/ML Engineer</div>
+    </div>
+
+    <div class="contact-block">
+      <div class="s-heading">Contact</div>
+      <span>Lucknow, Uttar Pradesh</span>
+      <a href="tel:+917607594770">+91-7607594770</a>
+      <a href="mailto:amogh0706@gmail.com">amogh0706@gmail.com</a>
+      <a href="https://linkedin.com/in/yourprofile">linkedin.com/in/yourprofile</a>
+      <a href="https://github.com/yourusername">github.com/yourusername</a>
+    </div>
+
+    <div>
+      <div class="s-heading">Technical Skills</div>
+      <div class="skill-group">
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-tags">
+          <span class="tag highlight">Python</span>
+          <span class="tag highlight">SQL</span>
+          <span class="tag">C++</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">AI / ML</div>
+        <div class="skill-tags">
+          <span class="tag highlight">Scikit-learn</span>
+          <span class="tag">NumPy</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">OpenCV</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Core CS</div>
+        <div class="skill-tags">
+          <span class="tag">DSA</span>
+          <span class="tag">OOPs</span>
+          <span class="tag">DBMS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Tools</div>
+        <div class="skill-tags">
+          <span class="tag">Git</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">VS Code</span>
+          <span class="tag">Jupyter</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="s-heading">Certifications</div>
+      <div class="cert-item">
+        Python
+        <div class="cert-provider">KAGGLE</div>
+        <div class="cert-status">● IN PROGRESS</div>
+      </div>
+      <div class="cert-item">
+        Data Structures & Algorithms
+        <div class="cert-provider">NPTEL</div>
+        <div class="cert-status">● IN PROGRESS</div>
+      </div>
+      <div class="cert-item">
+        Intro to Machine Learning
+        <div class="cert-provider">KAGGLE</div>
+        <div class="cert-status">● IN PROGRESS</div>
+      </div>
+      <div class="cert-item">
+        Generative AI Learning Path
+        <div class="cert-provider">GOOGLE</div>
+        <div class="cert-status">● IN PROGRESS</div>
+      </div>
+      <div class="cert-item">
+        Cloud Foundations
+        <div class="cert-provider">AWS / GOOGLE</div>
+        <div class="cert-status">● IN PROGRESS</div>
+      </div>
+    </div>
+
+
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <section>
+      <div class="m-heading">Objective</div>
+      <p class="objective-text">
+        Motivated 3rd-year B.Tech CSE (AI/ML) student with strong interest in Artificial Intelligence, Machine Learning, and Data Structures & Algorithms. Seeking internship opportunities to apply technical skills, contribute to real-world projects, and gain industry experience.
+      </p>
+    </section>
+
+    <section>
+      <div class="m-heading">Education</div>
+      <div class="edu-block">
+        <div class="edu-degree">B.Tech – CSE (Artificial Intelligence & Machine Learning)</div>
+        <div class="edu-college">Babu Banarsi Das University, Lucknow</div>
+        <div class="edu-year">Expected 2028</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="m-heading">Projects</div>
+
+      <div class="project-card">
+        <div class="project-title">AI Chatbot</div>
+        <ul class="project-bullets">
+          <li>Developed a text-based conversational AI system using Python with custom response logic for FAQ-style queries.</li>
+          <li>Implemented keyword-matching and rule-based intent detection to handle XX+ input patterns.</li>
+        </ul>
+        <div class="tech-stack">
+          <span class="tech-badge">Python</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">Movie Recommendation System</div>
+        <ul class="project-bullets">
+          <li>Built a content-based filtering recommendation engine using cosine similarity on a dataset of XX,000+ movies.</li>
+          <li>Achieved accurate genre and interest-based suggestions; cleaned and processed data using Pandas pipelines.</li>
+        </ul>
+        <div class="tech-stack">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Pandas</span>
+          <span class="tech-badge">Scikit-learn</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">Real-Time Face Detection System</div>
+        <ul class="project-bullets">
+          <li>Implemented Haar Cascade-based face detection using OpenCV, with real-time webcam feed processing.</li>
+          <li>Achieved low-latency detection with bounding box rendering at XX+ FPS on standard hardware.</li>
+        </ul>
+        <div class="tech-stack">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">OpenCV</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="m-heading">Achievements</div>
+      <div class="achievement-row">
+        <div class="ach-bullet"></div>
+        <div class="ach-text">Solved XX+ DSA problems on LeetCode, covering arrays, trees, dynamic programming, and graphs.</div>
+      </div>
+      <div class="achievement-row">
+        <div class="ach-bullet"></div>
+        <div class="ach-text">Completed XX AI/ML and Python projects independently, demonstrating applied problem-solving ability.</div>
+      </div>
+      <div class="achievement-row">
+        <div class="ach-bullet"></div>
+        <div class="ach-text">Currently pursuing Google AI Essentials and Python for Everybody certifications on Coursera.</div>
+      </div>
+    </section>
+
+  </main>
+</div>
+</body>
+</html>
